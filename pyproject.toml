@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "ryanchaiyakul", email = "ryanchaiyakul@gmail.com" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "diffrax>=0.7.0",
     "jax>=0.8.0",
