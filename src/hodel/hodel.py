@@ -104,7 +104,7 @@ class HODEL:
             jaxtyping.PyTree,
         ],
         jax.Array,
-    ] = lambda xf, xf_star, _: jnp.mean(jnp.linalg.norm(xf - xf_star) ** 2)  # MSE
+    ] = lambda xf, xf_star, _: jnp.mean(jnp.square(xf - xf_star))  # MSE
     update_fn: Callable[
         [
             jax.Array,
@@ -354,7 +354,6 @@ class HODEL:
             )
             updates, new_opt_state = optim.update(g, opt_state, Theta)
             new_Theta = optax.apply_updates(Theta, updates)
-            jax.debug.print("{}", L)
             return (new_Theta, new_opt_state), L
 
         (Theta_final, _), L = jax.lax.scan(
